@@ -1,0 +1,73 @@
+<div class="px-4 py-5  text-center">
+    <h1 class="display-5 fw-bold">USERNAME SUBMIT YOUR RECIPE</h1>
+</div>
+
+
+
+<div class="row justify-content-center">
+    <div class="col-8 pb-5">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/user-dash">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    INSERT
+                </li>
+            </ol>
+        </nav>
+
+        <form method="post" action="/user-insert-recipe" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-12">
+                    <label for="email" class="form-label mt-3">Recipe Name</label>
+                    <input type="text" name="name" id="name" class="form-control">
+                </div>
+
+                <div class="col-12">
+                    <label for="description" class="form-label mt-3">Description</label>
+                    <textarea name="description" id="description" cols="30" rows="4" class="form-control "></textarea>
+                </div>
+
+                <div class="col-12 mt-3">
+                    <label for="name" class="form-label mt-3">Ingredients</label>
+                    <div class="ingredientList">
+                        <div class="ingredientDiv mb-1">
+                            <input type="text" name="ingredients" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-1">
+                    <button type="button" class="btn btn-outline-primary" id="addIngredientsBtn">+Ingredient</button>
+                </div>
+
+
+                <div class="col-12">
+                    <label for="category" class="mt-4">Select Category</label>
+                    <select class="from-select form-control mt-2" name="category" id="" aria-label="Category">
+                        <option selected>Select Category</option>
+                        <option value="Indian">Indian</option>
+                        <option value="American">American</option>
+                        <option value="Chines">Chines</option>
+                        <option value="Mexican">Mexican</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="Thai">Thai</option>
+                    </select>
+                </div>
+
+                <div class="col-12 mt-4 ">
+                    <label for="image">Product Image</label>
+                    <input type="file" class="form-control mt-2" name="image" accept="image/*">
+                </div>
+
+
+                <a href="/user-insert-recipe">
+                    <div class="col-12 mt-4 mb-5 text-center">
+                        <button type="submit" class="btn btn-outline-secondary">SUBMIT</button>
+                    </div>
+                </a>
+
+            </div>
+        </form>
+
+    </div>
+</div>

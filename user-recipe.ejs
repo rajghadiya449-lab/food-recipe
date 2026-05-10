@@ -1,0 +1,87 @@
+<header id="header">
+    <nav>
+        <div class="container">
+            <div class="text-center admin-header">
+                <a href="/" class="nav-brand text-dark display-5 ">USER RECIPIES</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="col-12 my-3 d-flex justify-content-between">
+        <a href="/admin-home"><button type="button" class="btn btn-outline-success ">Home</button></a>
+
+        <a href="/admin">
+            <div class="col-12  ">
+                <button type="button" class="btn btn-outline-warning">LOGOUT</button>
+            </div>
+        </a>
+    </div>
+    <!-- form handling -->
+    <form  method="post">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Recipe Image</th>
+                    <th>Recipe Name</th>
+                    <th>Category</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+           
+            <tbody>
+
+
+
+                 <% data.forEach(function(food){ %>
+                    <tr class="align-middle">
+                        <td class="admin-pic ">
+                            <a href="#">
+                                <img src="/uploads/<%= food.image%>" alt="">
+                            </a>
+                        </td>
+                        <td>
+                            <%= food.name%>
+                        </td>
+
+                        <td>
+                            <%= food.category%>
+                        </td>
+                        <td>
+                            <%= food.username%>
+                        </td>
+                        <td>
+                            <%= food.email%>
+                        </td>
+                        <td>
+                            <a href="user-update-recipe/<%= food._id%>/admin-user" class="btn border-shadow update admin-icon">
+
+                                <span class="text-gradient ">
+                                    <i class="bi bi-highlighter"></i>
+                                </span>
+
+                            </a>
+                        </td>
+                        <td>
+
+                            <a href="/delete/<%= food._id%>" class="btn border-shadow delete admin-icon">
+                                <span class="text-gradient admin-icon">
+                                    <i class="bi bi-archive-fill"></i>
+                                </span>
+                            </a>
+
+                        </td>
+                    </tr>
+
+                    <% })%>
+
+
+
+            </tbody> 
+        </table>
+    </form>
+</div>

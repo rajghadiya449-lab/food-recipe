@@ -1,0 +1,46 @@
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Admin Panel Login</h1>
+
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-8 pb-5">
+
+
+
+        <% if( login_status==1){ %>
+
+            <div class="alert alert-warning alert-dismissible fade show  d-flex justify-content-between" role="alert">
+                <div> <strong>
+                        <%= msg%>
+                    </strong> </div>
+                <button type="button" class="close err-btn" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <% } %>
+
+
+
+
+                <form action="/admin" method="post">
+
+                    <div class="row g-2">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-label" placeholder="admin@gmail.com">
+                    </div>
+
+                    <div class="row g-2">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" placeholder="a">
+                    </div>
+                    <div class="mt-4 mb-5 text-center">
+                        <button type="submit" class="btn btn-outline-secondary ">LOGIN</button>
+                        <p> if you are a user then <a href="/user-login" style="color: blue;">click here</a></p>
+
+                    </div>
+                </form>
+
+    </div>
+</div>

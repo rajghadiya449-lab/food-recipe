@@ -1,0 +1,147 @@
+<% if(recipe && recipe.length > 0){ %>
+
+    <% recipe.forEach(function(recipeItem) { %>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <%= recipeItem.name %>
+                </li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-4 col-12">
+                <img src="/uploads/<%= recipeItem.image %>" alt="<%= recipeItem.name %>" class="img-fluid sticky-top"
+                    style="top: 20px;">
+            </div>
+
+            <div class="col-md-8 col-12">
+                <div class="col-12">
+                    <div class="row">
+                        <h1>
+                            <%= recipeItem.name %>
+                        </h1>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <i class="bi bi-tag"></i>
+                        <%= recipeItem.category %>
+                    </div>
+                    <div class="col-12">
+                        <h4>Cooking Instruction</h4>
+                        <%= recipeItem.description %>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <h4>Ingredients</h4>
+                        <ul class="list-group list-group-flush">
+                            <% recipeItem.ingredients.forEach(function(data){ %>
+                                <li class="list-group-item">
+                                    <%= data %>
+                                </li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Close the forEach loop here -->
+    <% }) %>
+
+    <% } else { %>
+        <h1>NO Item Found</h1>
+    <% } %>
+
+    <!-- // recipe review start -->
+
+    <!-- 
+    <div>
+        <h2>Add Your Review</h2>
+        <form action="/recipes/<%= recipe._id %>/reviews" method="post">
+            <input type="text" name="username" placeholder="Your Name" required><br>
+            <input type="email" name="email" placeholder="Your Email" required><br>
+            <input type="number" name="rating" placeholder="Rating (1-5)" min="1" max="5" required><br>
+            <textarea name="comment" placeholder="Your Review" required></textarea><br>
+            <button type="submit">Submit Review</button>
+        </form>
+    </div> -->
+
+    <div class="row">
+        <div class="col-md-4 col-12 submit-review mt-5">
+            <div>
+                <h5 class="border-bottom w-75 mb-4">Add Your Review</h5>
+                <form method="post" action="/review">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="username" class="form-label">Username</label>
+                            <!-- Error was here: Missing closing quotation mark -->
+                            <% recipe.forEach(function(recipeItem) { %>
+                                <input type="hidden" class="form-control" name="recipeId" value="<%= recipeItem._id %>">
+                            <% }) %>
+                            <input type="text" name="username" id="name" class="form-control" autocomplete="off" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email Id</label>
+                            <input type="email" name="email" class="form-control" autocomplete="off" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="rating" class="form-label"> Rating</label>
+                            <input type="number" name="rating" class="form-control" min="1" max="5" step="0.1" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="comment" class="form-label">Comment</label>
+                            <textarea name="comment" id="description" cols="30" rows="5" style="width: 225px" class="form-control"></textarea>
+                        </div>
+                        <div class="col-12 mt-4 mb-5">
+                            <button type="submit" class="btn btn-outline-secondary">SUBMIT</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-8 col-12 get-review">
+            <h4>Reviews</h4>
+            <% if(review != '' && review.length > 0){ %>
+                <% review.forEach((data) => { %>
+                    <div class="col-12 d-flex mt-5 review-con">
+                        <div class="col-1 review-icon">
+                            <div class="review-img mt-1">
+                                <img src="/images/review-iconn.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-11 review-body">
+                            <p class="review-name">
+                                <%= data.username %>
+                            </p>
+                            <span class="review-email">
+                                <%= data.email %>
+                            </span>
+                            <p class="review-rate">
+                                <% let starRate=[]; %>
+                                <% let fullStar=Math.floor(data.rating); %>
+                                <% let remain=data.rating - fullStar %>
+                                <% for (let i=1; i <=fullStar; i++) { %>
+                                    <% starRate.push('bi bi-star-fill'); %>
+                                <% } %>
+                                <% if (remain>= 0.5) { %>
+                                    <% starRate.push('bi bi-star-half'); %>
+                                <% } %>
+                                <% let emptyStar=5 - starRate.length; %>
+                                <% for (let i=1; i <=emptyStar; i++) { %>
+                                    <% starRate.push('bi bi-star'); %>
+                                <% } %>
+                                <% starRate.forEach((star) => { %>
+                                    <i class="<%= star %>"></i>
+                                <% }) %>
+                            </p>
+                            <p class="review-comment">
+                                <%= data.comment %>
+                            </p>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } %>
+        </div>
+    </div>

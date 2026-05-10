@@ -1,0 +1,106 @@
+<div class="px-4 pb-5 pt-4 text-center">
+    <h1 class="display-5 fw-bold">UPDATE YOUR RECIPE</h1>
+</div>
+<div class="row justify-content-center"></div>
+
+
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/<%= status%>-dash">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">
+            UPDATE
+        </li>
+    </ol>
+</nav>
+
+
+
+<form method="post" action="/user-update-recipe/<%= data._id %>/<%= status%>" >
+    <div class="col-md-4 col-sm-6 ">
+        <figure class="update-img ">
+            <img src="/uploads/<%= data.image %>" alt="">
+        </figure>
+    </div>
+
+
+    <div class="form-group">
+        <label for="recipeName" class="form-label mt-3 fs-5 fw-bold">Recipe Name:</label>
+        <input type="text" class="form-control" name="name" id="recipeName" value="<%= data.name%>">
+    </div>
+
+
+    <div class="form-group">
+        <label class="form-label mt-3 fs-5 fw-bold" for="recipeDescription">Recipe Description:</label>
+        <textarea class="form-control" id="recipeDescription" name="description" rows="5"
+            placeholder="Enter recipe description"><%= data.description %></textarea>
+    </div>
+
+
+    <div class="form-group">
+        <label class="form-label mt-3  fs-5 fw-bold" for="recipeIngredients">Recipe Ingredients:</label>
+
+        <div class="ingredientAll">
+            <div class="ingredientSelect mb-1">
+
+                <% data.ingredients.forEach(function(food){ %>
+                    <input type="text" class="form-control mt-1" name="ingredients" id="recipeName" value="<%= food%>">
+                    <% }) %>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-12 mt-1">
+        <button type="button" class="btn btn-outline-primary" id="submitBtn">+Ingredient</button>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <label class="form-label mt-3  fs-5 fw-bold" for="recipeCategory">Recipe Category:</label>
+        <select class="form-control" name="category" id="recipeCategory">
+            <option selected value="<%= data.category%>">
+                <%= data.category%>
+            </option>
+            <option value="Indian">Indian</option>
+            <option value="American">American</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Thai">Thai</option>
+            <option value="Chines">Chines</option>
+            <option value="Mexican">Mexican</option>
+            <!-- Add more categories here -->
+        </select>
+    </div>
+    <div class="row">
+        <input type="submit" class="form-control update-btn">
+    </div>
+</form>
+
+
+</div>
+
+
+<script>
+
+    var submitBtn = document.getElementById('submitBtn');
+
+    submitBtn.addEventListener('click', function () {
+        // Find the container div
+        var containerDiv = document.querySelector('.ingredientAll');
+
+        // Clone the existing input field
+        var existingInputs = containerDiv.querySelectorAll('input');
+        var lastInput = existingInputs[existingInputs.length - 1];
+        var newInput = lastInput.cloneNode(true);
+        newInput.value = ""; // Set the initial value to empty
+
+        // Append the cloned input tag to the container div
+        containerDiv.appendChild(newInput);
+    });
+
+
+
+</script>

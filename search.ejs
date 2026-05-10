@@ -1,0 +1,30 @@
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/" style="text-decoration: none;">Home</a></li>
+        <li class="breadcrumb-item"><a href="/search" style="text-decoration: none;">Search</a></li>   
+    </ol>
+</nav>
+
+
+
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 ">
+
+    <% if(typeof searchData !=='undefined' && searchData.length> 0){ %>
+        <% searchData.forEach(function(data) { %>
+            <a href="/recipe/<%= data._id %>" class="col text-center category__link">
+                <div class="category__img category__img--large shadow">
+                    <img src="/uploads/<%= data.image %>" alt="view all categories" loading="lazy">
+                </div>
+                <div class="pt-1">
+                    <%= data.name %>
+                </div>
+            </a>
+            <% }) %>
+                <% } else { %>
+                
+                    <h4>No recipes found</h4>
+
+                    <% } %>
+</div>

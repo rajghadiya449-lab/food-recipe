@@ -1,0 +1,36 @@
+project description:-
+-----------------------------------------------------------------------------------------------------
+Food Recipe Blog Project
+Technologies Used:
+
+Frontend: HTML, CSS, Bootstrap, JavaScript
+Backend: Node.js, Express.js
+Database: MongoDB
+Project Overview:
+The Food Recipe Blog is a comprehensive web application designed to manage and display recipes. The project features three distinct panels: Admin Panel, User Admin Panel, and User Panel, each with unique functionalities.
+
+1. Admin Panel:
+
+Recipe Management: Admins can add, update, and delete recipes. Each recipe includes an image upload feature.
+User Recipes: Admins can view recipes added by users, displayed along with the user's name and email.
+2. User Admin Panel:
+
+Recipe Management: Users can add, update, and delete their recipes. Similar to the admin, users can upload images for their recipes.
+Recipe Visibility: Recipes added by users are visible in the Admin Panel, with the user's details.
+3. User Panel:
+
+Recipe Viewing: Users can browse recipes without logging in. Both admin and user-added recipes are displayed, with attribution (e.g., "Added by Admin" or "Added by [User's Name]").
+Category Browsing: The homepage features categories such as American, Indian, Thai, Chinese, and Mexican. Clicking on a category shows only recipes from that category.
+Recipe Details: Each recipe page displays the recipe image, description, ingredients, and a review section.
+Review System: Users can leave reviews by entering their name, rating, review, and email. Upon submission, a verification link is sent to the entered email. Clicking the verification link redirects the user back to the recipe page to confirm and submit the review. Ratings are displayed in a star format.
+Search Functionality: Users can search for recipes by name or category from the homepage and category pages.
+Additional Features:
+
+Random Recipe: A feature on the homepage that displays a random recipe. Refreshing the page changes the displayed recipe.
+Latest Recipes: Shows the latest 20 recipes added, regardless of category.
+Category Highlights: The homepage also displays the latest 5 recipes from select categories, allowing quick access without navigating to the category section.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+project senario :- 
+
+"i make a one project which name is food recipe blog . i used a html ,css ,bootstrap , javascript for frontend and for backend side i use a nodejs , express js and databse i used a mongodb.    in my project i have a 3 panel like 1. admin panel in the admin panel the admin s add a recipe with image upload ,update the recipe and delete the recipe . 2). user side admin panel like in this panel user can also insert recipe with image , update recipe , delete recipe. when user add recipe then admin side panel all users recipe is showed with user's name and email . 3)user side panel in this panel a user is watch recipe without login and user can show show recipe of both admin added and user added recipe under the recipe there are show a name if admin is add recipe then under recipe there are show add by admin and id perticular admin is add a recipe then it show user's name . in home page of this panel there are 5 category liek american,indian,thai,chines,mexican if we click on the any category then it shiw only that category recipe and if we click on that recipe then it open with recipes's image , description , ingredients , and review page . in review page if user have to give review to perticular recipe so they have to insert their name ,rating and  review into a review form and email also then when user click on the submit button so it verify that the user is enter the email is valid or not so it send a one verification link to the user enter email so when the user is click on that link so user can redirect to that perticular recipe page where they have to give review and review is submit . user can search a recipe also in hoem page and perticular category .   in home page there are a many option like random recipe in that when we click then it open one page and there show a one recipe and when we refresh it it chnage but there are only one recipe exist . second is latest recipe so if we add any catgory there are show last 20 recipe of any category . there are 4-5 categoris last 5 recipe is showed if we have to direct see some category then we dont have to goto category section we can go through dorect home page perticular category but there are not show all categories reciep only some category are displayed and in my recipe review section i add a rating in a number but there are showed that number into a start format ".

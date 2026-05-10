@@ -1,0 +1,84 @@
+<h1 class="pb-4">Explore Categories</h1>
+
+<div class="col-md-3 text-end mb-3">
+    <form method="post" action="/search/<%= categoryId %>" class="d-flex ">
+        <input type="search" name="searchTerm" id="searchInput" class="form-control" placeholder="Search....">
+        <input type="submit" value="search" id="searchBtn" class="  mx-2 btn btn-outline-secondary">
+    </form>
+</div>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/" style="text-decoration: none;">Home</a></li>
+        <li class="breadcrumb-item"><a href="/categories" style="text-decoration: none;">Categories</a></li>
+        <li class="breadcrumb-item active" aria-current="page">
+            <%= categoryId %>
+        </li>
+    </ol>
+</nav>
+
+
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mb-4 ">
+    <% if(typeof data !=='undefined' && data.length>0){ %>
+        <% data.forEach(function(food) { %>
+            <a href="/categories/<%=food.name%>" class="col text-center category__link ">
+                <div class="category__img  shadow">
+                    <img src="/uploads/<%=food.image%>" alt="">
+                </div>
+                <div class="pt-1">
+                    <%=food.name%>
+                </div>
+            </a>
+            <% }); %>
+                <% } %>
+
+</div>
+
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 ">
+
+    <% if(typeof categoryById!=='undefined' && categoryById.length>0){ %>
+        <% categoryById.forEach(function(data) { %>
+            <a href="/recipe/<%= data._id%>" class="col text-center category__link">
+                <div class="category__img category__img--large shadow">
+                    <img src="/uploads/<%= data.image%>" alt="view all categories" loading="lazy">
+                </div>
+                <div class="pt-1">
+                    <%= data.name%>
+                </div>
+                <span style="font-size:12px ; color: brown;">Upload By:<%= data.username %></span>
+            </a>
+            <% }) %>
+                <% } %>
+
+</div>
+
+<nav aria-label="Page navigation example" class="page-cont">
+    <ul class="pagination ">
+
+        <% for(let i=1 ; i <=page; i++){ %>
+            <!-- <li class="page-item "><a class="page-link" href="?page_no=<%=i%>">
+                 <    -->
+            </a></li>
+            <li class="page-item "><a class="page-link" href="?page_no=<%=i%>">
+                    <%= i %>
+                </a></li>
+            <!-- <li class="page-item "><a class="page-link" href="?page_no=<%=i%>">
+                    > -->
+            </a></li>
+
+            <%}%>
+
+    </ul>
+</nav>
+
+
+
+<script>
+
+    window.onload = function () {
+        var searchInput = document.getElementById('searchInput');
+        var searchTerm = '<%= typeof searchTerm !== "undefined" ? searchTerm : "" %>';
+        searchInput.value = searchTerm;
+    };
+
+</script>
